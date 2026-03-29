@@ -526,41 +526,87 @@ body {
 }
 
 /* ── Lightbox ── */
+@keyframes lb-overlay-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes lb-overlay-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes lb-content-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes lb-content-out {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(20px); }
+}
+
 .lightbox-overlay {
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: zoom-out;
+  animation: lb-overlay-in 0.22s ease;
+  padding: 24px 20px;
+}
+
+.lightbox-overlay.closing {
+  animation: lb-overlay-out 0.22s ease forwards;
+}
+
+.lightbox-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  cursor: default;
+  animation: lb-content-in 0.28s ease;
+  max-width: min(86vw, 860px);
+}
+
+.lightbox-overlay.closing .lightbox-content {
+  animation: lb-content-out 0.22s ease forwards;
 }
 
 .lightbox-img {
-  max-width: 90vw;
-  max-height: 90vh;
+  display: block;
+  max-width: 100%;
+  max-height: 72vh;
   object-fit: contain;
-  cursor: default;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
 }
 
 .lightbox-close {
-  position: fixed;
-  top: 20px;
-  right: 24px;
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 24px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 12px 36px;
+  border: 1px solid #333;
+  background: #fff;
+  color: #333;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
   cursor: pointer;
-  opacity: 0.7;
-  transition: opacity 0.15s;
-  line-height: 1;
+  transition: background 0.15s, color 0.15s;
+  min-width: 200px;
+  justify-content: center;
 }
 
 .lightbox-close:hover {
-  opacity: 1;
+  background: #333;
+  color: #fff;
 }
 
 /* ── Responsive ── */
