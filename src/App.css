@@ -1,0 +1,430 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Noto+Sans+JP:wght@400;500&family=Montserrat:wght@400;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Noto Sans JP', 'Yu Gothic', 'Hiragino Sans', sans-serif;
+  background: #fff url('https://jackjeanne.com/assets/v2/img/bg.jpg') center repeat;
+  color: #333;
+  min-height: 100vh;
+}
+
+/* ── Header ── */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fff;
+  border-bottom: 3px solid #3ebfe9;
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.app-header h1 {
+  font-family: 'Montserrat', 'Noto Serif JP', serif;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #1a1a1a;
+  text-transform: uppercase;
+}
+
+.app-header p {
+  font-size: 12px;
+  color: #acacac;
+  letter-spacing: 0.1em;
+  margin-left: auto;
+}
+
+/* ── Main ── */
+.app-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 20px;
+}
+
+/* ── Controls ── */
+.controls {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-top: 3px solid #3ebfe9;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Search Bar ── */
+.search-bar input {
+  width: 100%;
+  padding: 10px 16px;
+  border: 1px solid #d6d3ce;
+  font-size: 14px;
+  color: #333;
+  outline: none;
+  transition: border-color 0.2s;
+  background: #fafafa;
+  font-family: inherit;
+  letter-spacing: 0.05em;
+}
+
+.search-bar input:focus {
+  border-color: #3ebfe9;
+  background: #fff;
+}
+
+.search-bar input::placeholder {
+  color: #acacac;
+  font-size: 13px;
+}
+
+/* ── Filter Bar ── */
+.filter-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filter-group label {
+  font-size: 11px;
+  color: #acacac;
+  letter-spacing: 0.1em;
+  min-width: 52px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.filter-buttons button {
+  padding: 4px 14px;
+  border: 1px solid #d6d3ce;
+  background: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  color: #555;
+  transition: all 0.15s;
+  font-family: inherit;
+  letter-spacing: 0.04em;
+}
+
+.filter-buttons button:hover {
+  border-color: #3ebfe9;
+  color: #3ebfe9;
+}
+
+.filter-buttons button.active {
+  background: #3ebfe9;
+  border-color: #3ebfe9;
+  color: #fff;
+}
+
+.filter-buttons button.active-owned {
+  background: #4caf7d;
+  border-color: #4caf7d;
+  color: #fff;
+}
+
+/* ── Results Summary ── */
+.results-summary {
+  font-size: 12px;
+  color: #acacac;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ── Product Grid ── */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* ── Product Card ── */
+.product-card {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s;
+  position: relative;
+}
+
+.product-card:hover {
+  box-shadow: 0 4px 20px rgba(62, 191, 233, 0.15);
+}
+
+.product-card.is-owned {
+  border-color: #4caf7d;
+}
+
+.product-card.is-owned .product-image::after {
+  content: '購入済み';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #4caf7d;
+  color: #fff;
+  font-size: 11px;
+  padding: 3px 10px;
+  letter-spacing: 0.06em;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.product-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #f0f0f0;
+  overflow: hidden;
+  position: relative;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.04);
+}
+
+.product-info {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+/* ── Tags ── */
+.product-tags {
+  display: flex;
+  gap: 6px;
+}
+
+.tag {
+  font-size: 10px;
+  padding: 2px 8px;
+  letter-spacing: 0.06em;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.tag-category {
+  background: #e8f8fd;
+  color: #3ebfe9;
+  border: 1px solid #b8e8f7;
+}
+
+.tag-year {
+  background: #f5f5f5;
+  color: #acacac;
+  border: 1px solid #e0e0e0;
+}
+
+/* ── Product Info ── */
+.product-name {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: #1a1a1a;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.product-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 11px;
+  color: #acacac;
+  letter-spacing: 0.04em;
+}
+
+.product-price {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-top: 4px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.price-main {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.price-box {
+  font-size: 11px;
+  color: #acacac;
+}
+
+.product-distribution {
+  font-size: 11px;
+  color: #3ebfe9;
+  letter-spacing: 0.04em;
+}
+
+/* ── Card Footer ── */
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.detail-link {
+  font-size: 12px;
+  color: #3ebfe9;
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  font-family: 'Montserrat', sans-serif;
+  transition: opacity 0.2s;
+}
+
+.detail-link:hover {
+  opacity: 0.7;
+}
+
+/* ── Owned Toggle ── */
+.owned-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border: 1px solid #d6d3ce;
+  background: #fff;
+  font-size: 11px;
+  cursor: pointer;
+  color: #888;
+  transition: all 0.15s;
+  font-family: 'Noto Sans JP', sans-serif;
+  letter-spacing: 0.04em;
+}
+
+.owned-toggle:hover {
+  border-color: #4caf7d;
+  color: #4caf7d;
+}
+
+.owned-toggle.owned {
+  background: #4caf7d;
+  border-color: #4caf7d;
+  color: #fff;
+}
+
+.owned-toggle svg {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+/* ── Empty State ── */
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: #acacac;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ── Image zoom hint ── */
+.product-image {
+  cursor: zoom-in;
+}
+
+.image-zoom-hint {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  font-size: 16px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.product-card:hover .image-zoom-hint {
+  opacity: 1;
+}
+
+/* ── Lightbox ── */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  cursor: default;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+  line-height: 1;
+}
+
+.lightbox-close:hover {
+  opacity: 1;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .app-header {
+    padding: 16px 20px;
+  }
+
+  .app-header h1 {
+    font-size: 17px;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+  }
+
+  .product-name {
+    font-size: 12px;
+  }
+}
