@@ -27,7 +27,8 @@ body {
   padding: 20px 32px;
   display: flex;
   align-items: center;
-  gap: 16px;
+  flex-wrap: wrap;
+  gap: 8px 16px;
 }
 
 .app-header h1 {
@@ -37,6 +38,7 @@ body {
   letter-spacing: 0.12em;
   color: #1a1a1a;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .header-stats {
@@ -48,6 +50,7 @@ body {
   font-size: 12px;
   color: #acacac;
   letter-spacing: 0.1em;
+  white-space: nowrap;
 }
 
 .header-total {
