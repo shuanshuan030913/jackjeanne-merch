@@ -13,12 +13,16 @@ body {
   min-height: 100vh;
 }
 
-/* ── Header ── */
-.app-header {
+/* ── Sticky Wrapper ── */
+.sticky-top {
   position: sticky;
   top: 0;
   z-index: 100;
   background: #fff;
+}
+
+/* ── Header ── */
+.app-header {
   border-bottom: 3px solid #3ebfe9;
   padding: 20px 32px;
   display: flex;
@@ -35,6 +39,25 @@ body {
   text-transform: uppercase;
 }
 
+.header-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  margin-left: auto;
+  font-size: 12px;
+  color: #acacac;
+  letter-spacing: 0.1em;
+}
+
+.header-total {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #3ebfe9;
+  letter-spacing: 0.06em;
+}
+
 .app-header p {
   font-size: 12px;
   color: #acacac;
@@ -46,19 +69,97 @@ body {
 .app-main {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 28px 20px;
+  padding: 24px 20px;
 }
 
 /* ── Controls ── */
 .controls {
   background: #fff;
-  border: 1px solid #e8e8e8;
-  border-top: 3px solid #3ebfe9;
-  padding: 20px 24px;
-  margin-bottom: 24px;
+  border-bottom: 1px solid #e8e8e8;
+  padding: 12px 24px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 0;
+}
+
+.controls-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.controls-row .search-bar {
+  flex: 1;
+}
+
+.filter-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid #d6d3ce;
+  background: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  color: #555;
+  font-family: 'Noto Sans JP', sans-serif;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.filter-toggle:hover {
+  border-color: #3ebfe9;
+  color: #3ebfe9;
+}
+
+.filter-toggle.open {
+  border-color: #3ebfe9;
+  color: #3ebfe9;
+}
+
+.filter-toggle.has-filters {
+  border-color: #3ebfe9;
+}
+
+.filter-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  background: #3ebfe9;
+  color: #fff;
+  font-size: 10px;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 0;
+}
+
+.toggle-chevron {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform 0.2s;
+}
+
+.filter-toggle.open .toggle-chevron {
+  transform: rotate(-135deg) translateY(-2px);
+}
+
+.filter-collapsible {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.25s ease, padding 0.25s ease;
+  padding-top: 0;
+}
+
+.filter-collapsible.expanded {
+  max-height: 300px;
+  padding-top: 12px;
 }
 
 /* ── Search Bar ── */
@@ -291,6 +392,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
   margin-top: auto;
   padding-top: 10px;
   border-top: 1px solid #f0f0f0;
@@ -303,6 +406,8 @@ body {
   letter-spacing: 0.06em;
   font-family: 'Montserrat', sans-serif;
   transition: opacity 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .detail-link:hover {
@@ -323,6 +428,8 @@ body {
   transition: all 0.15s;
   font-family: 'Noto Sans JP', sans-serif;
   letter-spacing: 0.04em;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .owned-toggle:hover {
@@ -340,6 +447,50 @@ body {
   width: 12px;
   height: 12px;
   flex-shrink: 0;
+}
+
+/* ── Quantity Stepper ── */
+.qty-stepper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #4caf7d;
+  flex-shrink: 0;
+}
+
+.qty-btn {
+  width: 24px;
+  height: 26px;
+  border: none;
+  background: #fff;
+  color: #4caf7d;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+  padding: 0;
+  line-height: 1;
+}
+
+.qty-btn:hover {
+  background: #f0faf4;
+}
+
+.qty-value {
+  min-width: 22px;
+  text-align: center;
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  color: #4caf7d;
+  background: #fff;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid #4caf7d;
+  border-right: 1px solid #4caf7d;
 }
 
 /* ── Empty State ── */
@@ -426,5 +577,10 @@ body {
 
   .product-name {
     font-size: 12px;
+  }
+
+  .card-footer {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

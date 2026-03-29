@@ -16,12 +16,13 @@ const CheckIcon = () => (
   </svg>
 )
 
-export default function ProductCard({ product, owned, onToggleOwned }) {
+export default function ProductCard({ product, quantity, onSetQuantity }) {
   const [lightboxOpen, setLightboxOpen] = useState(false)
+  const isOwned = quantity > 0
 
   return (
     <>
-      <div className={`product-card${owned ? ' is-owned' : ''}`}>
+      <div className={`product-card${isOwned ? ' is-owned' : ''}`}>
         <div className="product-image" onClick={() => setLightboxOpen(true)}>
           <img
             src={product.image}
@@ -58,13 +59,31 @@ export default function ProductCard({ product, owned, onToggleOwned }) {
             >
               詳細はこちら →
             </a>
-            <button
-              className={`owned-toggle${owned ? ' owned' : ''}`}
-              onClick={() => onToggleOwned(product.id)}
-            >
-              <CheckIcon />
-              {owned ? '購入済み' : '未購入'}
-            </button>
+            {isOwned ? (
+              <div className="qty-stepper">
+                <button
+                  className="qty-btn"
+                  onClick={() => onSetQuantity(product.id, quantity - 1)}
+                >
+                  −
+                </button>
+                <span className="qty-value">{quantity}</span>
+                <button
+                  className="qty-btn"
+                  onClick={() => onSetQuantity(product.id, quantity + 1)}
+                >
+                  ＋
+                </button>
+              </div>
+            ) : (
+              <button
+                className="owned-toggle"
+                onClick={() => onSetQuantity(product.id, 1)}
+              >
+                <CheckIcon />
+                未購入
+              </button>
+            )}
           </div>
         </div>
       </div>
