@@ -1358,5 +1358,53 @@
     "image": "https://jackjeanne.com/assets/v2/data/news/goods/202607/br12.jpg",
     "sourceUrl": "https://jackjeanne.com/news/?id=260327-1",
     "detailUrl": "https://broccolionline.jp/"
+  },
+  {
+    "id": 86,
+    "name": "トレーディンググリッター缶バッジ",
+    "year": 2026,
+    "category": "badge",
+    "varieties": "全8種よりランダムで1種",
+    "price": "550円(税込)",
+    "boxPrice": null,
+    "boxQuantity": null,
+    "releaseDate": "2026年4月9日（木）",
+    "distribution": "カラオケの鉄人コラボイベント限定販売",
+    "specs": "素材：ブリキ本体サイズ（約）：直径56mmφ",
+    "image": "https://jackjeanne.com/assets/v2/data/news/goods/202604/te01.jpg",
+    "sourceUrl": "https://jackjeanne.com/news/?id=260417-1",
+    "detailUrl": null
+  },
+  {
+    "id": 87,
+    "name": "トレーディング証明写真風ステッカー",
+    "year": 2026,
+    "category": "sticker",
+    "varieties": "全8種よりランダムで1種",
+    "price": "660円(税込)",
+    "boxPrice": null,
+    "boxQuantity": null,
+    "releaseDate": "2026年4月9日（木）",
+    "distribution": "カラオケの鉄人コラボイベント限定販売",
+    "specs": "素材：紙(シール)本体サイズ（約）：148mm×100mm",
+    "image": "https://jackjeanne.com/assets/v2/data/news/goods/202604/te02.jpg",
+    "sourceUrl": "https://jackjeanne.com/news/?id=260417-1",
+    "detailUrl": null
+  },
+  {
+    "id": 88,
+    "name": "木製スタンド",
+    "year": 2026,
+    "category": "other",
+    "varieties": "全8種",
+    "price": "1,650円(税込)",
+    "boxPrice": null,
+    "boxQuantity": null,
+    "releaseDate": "2026年4月9日（木）",
+    "distribution": "カラオケの鉄人コラボイベント限定販売",
+    "specs": "素材：MDF（木質繊維板）本体サイズ（約）：97mm×165mm",
+    "image": "https://jackjeanne.com/assets/v2/data/news/goods/202604/te03.jpg",
+    "sourceUrl": "https://jackjeanne.com/news/?id=260417-1",
+    "detailUrl": null
   }
 ]
