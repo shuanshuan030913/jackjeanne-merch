@@ -14,6 +14,7 @@ const YEAR_PAGES = [
   { year: 2025, url: 'https://jackjeanne.com/news/?id=250307-1' },
   { year: 2026, url: 'https://jackjeanne.com/news/?id=260327-1' },
   { year: 2026, url: 'https://jackjeanne.com/news/?id=260417-1' },
+  { year: 2026, url: 'https://jackjeanne.com/news/?id=260911-1' },
 ]
 
 const CATEGORY_MAP = {
